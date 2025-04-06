@@ -3,7 +3,7 @@ name: Support Request
 about: Stuck on one of the installation steps in the README?
 title: "[Support]"
 labels: help wanted
-assignees: codyc1515
+assignees: tgrossen
 
 ---
 

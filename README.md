@@ -28,7 +28,4 @@ All 100% local, no internet access needed.
 
 # Credit
 
-This was forked from <https://github.com/codyc1515/homebridge-sma-inverter>. Differences:
-
-- Omitted the Eve-based history support which didn't quite work. Recommended alternative: [`sbfspot`](https://github.com/SBFspot/SBFspot) <sup>[`Docker` image](https://github.com/nakla/sbfspot)</sup> (which reads data locally, also via ModBus), and optionally upload let it upload your production data to <https://pvoutput.org> (easy to use UI)
-- Omitted the "Total". Observe that in SMA's `SMA Energy` app.
+This was forked from <https://github.com/wimleers/homebridge-sma-home-manager>.

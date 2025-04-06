@@ -1,5 +1,5 @@
 {
-  "pluginAlias": "SMAHomeManager",
+  "pluginAlias": "SMAHomeInverter",
   "pluginType": "accessory",
   "singular": true,
   "headerDisplay": null,

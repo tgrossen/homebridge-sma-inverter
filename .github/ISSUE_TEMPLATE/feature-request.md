@@ -3,7 +3,7 @@ name: Feature Request
 about: Suggest an idea or improvement for homebridge-sma-inverter.
 title: "[Feature Request]"
 labels: enhancement
-assignees: codyc1515
+assignees: tgrossen
 
 ---
 

@@ -3,7 +3,7 @@ name: Bug Report
 about: Raise a bug related report for homebridge-sma-inverter.
 title: "[Bug]"
 labels: bug
-assignees: codyc1515
+assignees: tgrossen
 
 ---
 
