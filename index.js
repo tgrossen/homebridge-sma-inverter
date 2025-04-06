@@ -17,7 +17,7 @@ function SMAHomeManager(log, config) {
 	this.log = log;
 	this.name = config["name"] || "SMA Solar Inverter";
 	// Hardcoded address and hence zero config thanks to https://manuals.sma.de/SBSxx-10/en-US/1685190283.html.
-	this.address = '169.254.12.3';
+	this.address = '192.168.1.221';
 	const refreshInterval = (config['refreshInterval'] * 1000) || 1000;
 	this.debug = config["debug"] || false;
 
@@ -100,7 +100,7 @@ SMAHomeManager.prototype = {
 
 		// Connect to the ModBus server IP address
 		try {
-			client.connectTCP(this.address, { port: 502 });
+			client.connectTCP(this.address);
 		}
 		catch(err) {
 			this.log("Connection attempt failed");
