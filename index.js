@@ -36,7 +36,7 @@ function SMAHomeManager(log, config) {
 	Characteristic.CustomAmperes.UUID = 'E863F126-079E-48FF-8F27-9C2605A29F52';
 
 	Characteristic.CurrentAmbientLightLevel = function() {
-		Characteristic.call(this, 'Total Consumption', 'E863F10D-079E-48FF-8F27-9C2605A29F52');
+		Characteristic.call(this, 'Total Consumption', 'E863F10F-079E-48FF-8F27-9C2605A29F52');
 		this.setProps({
 			format: Characteristic.Formats.FLOAT,
 			unit: 'kWh',
@@ -48,7 +48,7 @@ function SMAHomeManager(log, config) {
 		this.value = this.getDefaultValue();
 	};
 	inherits(Characteristic.CurrentAmbientLightLevel, Characteristic);
-	Characteristic.CurrentAmbientLightLevel.UUID = 'E863F10D-079E-48FF-8F27-9C2605A29F52';
+	Characteristic.CurrentAmbientLightLevel.UUID = 'E863F10F-079E-48FF-8F27-9C2605A29F52';
 
 	Characteristic.CustomVolts = function() {
 		Characteristic.call(this, 'Volts', 'E863F10A-079E-48FF-8F27-9C2605A29F52');
