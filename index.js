@@ -182,6 +182,7 @@ SMAHomeManager.prototype = {
 				else {
 					this.inverter.getCharacteristic(Characteristic.On).updateValue(false);
 					this.inverter.getCharacteristic(Characteristic.CustomWatts).updateValue(0);
+					this.inverter.getCharacteristic(Characteristic.CurrentAmbientLightLevel).updateValue(0);
 				}
 			}.bind(this));
 
