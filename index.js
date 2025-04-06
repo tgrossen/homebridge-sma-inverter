@@ -184,12 +184,12 @@ SMAHomeManager.prototype = {
 				}
 			}.bind(this));
 
-			// Eve - kWh
-			client.readHoldingRegisters(30535, 10, function(err, data) {
-				if(data.buffer.readUInt32BE() > 0 && data.buffer.readUInt32BE() <= (65535*1000) && typeof data.buffer.readUInt32BE() == 'number' && Number.isFinite(data.buffer.readUInt32BE())) {
-					this.inverter.getCharacteristic(Characteristic.CurrentAmbientLightLevel).updateValue(data.buffer.readUInt32BE() / 1000);
-				}
-			}.bind(this));
+			// // Eve - kWh
+			// client.readHoldingRegisters(30535, 10, function(err, data) {
+			// 	if(data.buffer.readUInt32BE() > 0 && data.buffer.readUInt32BE() <= (65535*1000) && typeof data.buffer.readUInt32BE() == 'number' && Number.isFinite(data.buffer.readUInt32BE())) {
+			// 		this.inverter.getCharacteristic(Characteristic.CurrentAmbientLightLevel).updateValue(data.buffer.readUInt32BE() / 1000);
+			// 	}
+			// }.bind(this));
 		}
 		catch(err) {
 			this.log("Refresh failed", "Attempting reconnect...", err);
@@ -206,7 +206,9 @@ SMAHomeManager.prototype = {
 		this.inverter.addCharacteristic(Characteristic.StatusActive);
 		this.inverter.addCharacteristic(Characteristic.StatusFault);
 		this.inverter.addCharacteristic(Characteristic.CustomAmperes);
-		this.inverter.addCharacteristic(Characteristic.CurrentAmbientLightLevel);
+		if (!this.inverter.getCharacteristic(Characteristic.CurrentAmbientLightLevel)) {
+			this.inverter.addCharacteristic(Characteristic.CurrentAmbientLightLevel);
+		}
 		this.inverter.addCharacteristic(Characteristic.CustomVolts);
 		this.inverter.addCharacteristic(Characteristic.CustomWatts);
 
