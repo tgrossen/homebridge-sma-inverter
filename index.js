@@ -20,6 +20,7 @@ function SMAHomeManager(log, config) {
 	this.address = config["address"] || "169.254.12.3";
 	const refreshInterval = (config['refreshInterval'] * 1000) || 1000;
 	this.debug = config["debug"] || false;
+	this.readyToRefresh = false;
 
 	// const customAmperesUUID = uuid();
 	// Characteristic.CustomAmperes = function() {
@@ -88,7 +89,9 @@ function SMAHomeManager(log, config) {
 	// Start the connection and refresh cycles
 	this._connect();
 	setInterval(function() {
-		this._refresh();
+		if (this.readyToRefresh) {
+			this._refresh();
+		}
 	}.bind(this), refreshInterval);
 }
 
@@ -223,6 +226,8 @@ SMAHomeManager.prototype = {
 			// @see https://github.com/homebridge/HAP-NodeJS/issues/940#issuecomment-1111470278
 			.setCharacteristic(Characteristic.Manufacturer, 'SMA Solar Technology AG')
 			.setCharacteristic(Characteristic.Model, 'Sunny Boy');
+		
+		this.readyToRefresh = true;
 
 		return [
 			this.inverter,
