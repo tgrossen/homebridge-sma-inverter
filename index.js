@@ -195,7 +195,7 @@ SMAHomeManager.prototype = {
 	},
 
 	getServices: function() {
-		this.inverter = new Service.Lightbulb(this.name);
+		this.inverter = new Service.LightSensor(this.name);
 		// Inverter being on/off is something the inverter decides itself, so do not give the user the illusion they can change it.
 		this._makeReadonly(this.inverter.getCharacteristic(Characteristic.On));
 		this.inverter.addCharacteristic(Characteristic.StatusActive);
