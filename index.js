@@ -1,5 +1,6 @@
 const inherits = require("util").inherits,
 	ModbusRTU = require("modbus-serial");
+const uuid = require("uuid").v4;
 
 var client = new ModbusRTU();
 
@@ -20,8 +21,9 @@ function SMAHomeManager(log, config) {
 	const refreshInterval = (config['refreshInterval'] * 1000) || 1000;
 	this.debug = config["debug"] || false;
 
+	const customAmperesUUID = uuid();
 	Characteristic.CustomAmperes = function() {
-		Characteristic.call(this, 'Amperes', 'E863F126-079E-48FF-8F27-9C2605A29F52');
+		Characteristic.call(this, 'Amperes', customAmperesUUID);
 		this.setProps({
 			format: Characteristic.Formats.FLOAT,
 			unit: 'A',
@@ -33,10 +35,11 @@ function SMAHomeManager(log, config) {
 		this.value = this.getDefaultValue();
 	};
 	inherits(Characteristic.CustomAmperes, Characteristic);
-	Characteristic.CustomAmperes.UUID = 'E863F126-079E-48FF-8F27-9C2605A29F52';
+	Characteristic.CustomAmperes.UUID = customAmperesUUID;
 
+	const currentAmbientLightLevelUUID = uuid();
 	Characteristic.CurrentAmbientLightLevel = function() {
-		Characteristic.call(this, 'Total Consumption', 'E863F10F-079E-48FF-8F27-9C2605A29F52');
+		Characteristic.call(this, 'Total Consumption', currentAmbientLightLevelUUID);
 		this.setProps({
 			format: Characteristic.Formats.FLOAT,
 			unit: 'kWh',
@@ -48,10 +51,11 @@ function SMAHomeManager(log, config) {
 		this.value = this.getDefaultValue();
 	};
 	inherits(Characteristic.CurrentAmbientLightLevel, Characteristic);
-	// Characteristic.CurrentAmbientLightLevel.UUID = 'E863F10F-079E-48FF-8F27-9C2605A29F52';
+	Characteristic.CurrentAmbientLightLevel.UUID = currentAmbientLightLevelUUID;
 
+	const customVoltsUUID = uuid();
 	Characteristic.CustomVolts = function() {
-		Characteristic.call(this, 'Volts', 'E863F10A-079E-48FF-8F27-9C2605A29F52');
+		Characteristic.call(this, 'Volts', customVoltsUUID);
 		this.setProps({
 			format: Characteristic.Formats.FLOAT,
 			unit: 'V',
@@ -63,10 +67,11 @@ function SMAHomeManager(log, config) {
 		this.value = this.getDefaultValue();
 	};
 	inherits(Characteristic.CustomVolts, Characteristic);
-	Characteristic.CustomVolts.UUID = 'E863F10A-079E-48FF-8F27-9C2605A29F52';
+	Characteristic.CustomVolts.UUID = customVoltsUUID;
 
+	const customWattsUUID = uuid();
 	Characteristic.CustomWatts = function() {
-		Characteristic.call(this, 'Consumption', 'E863F10D-079E-48FF-8F27-9C2605A29F52');
+		Characteristic.call(this, 'Consumption', customWattsUUID);
 		this.setProps({
 			format: Characteristic.Formats.FLOAT,
 			unit: 'W',
@@ -78,7 +83,7 @@ function SMAHomeManager(log, config) {
 		this.value = this.getDefaultValue();
 	};
 	inherits(Characteristic.CustomWatts, Characteristic);
-	Characteristic.CustomWatts.UUID = 'E863F10D-079E-48FF-8F27-9C2605A29F52';
+	Characteristic.CustomWatts.UUID = customWattsUUID;
 
 	// Start the connection and refresh cycles
 	this._connect();
