@@ -213,17 +213,25 @@ SMAHomeManager.prototype = {
 		this._makeReadonly(this.inverter.getCharacteristic(Characteristic.On));
 		this.inverter.addCharacteristic(Characteristic.StatusActive);
 		this.inverter.addCharacteristic(Characteristic.StatusFault);
-		if (!this.inverter.getCharacteristic(Characteristic.CustomAmperes)) {
+		try {
 			this.inverter.addCharacteristic(Characteristic.CustomAmperes);
+		} catch (err) {
+			this.log('Already added CustomAmperes');
 		}
-		if (!this.inverter.getCharacteristic(Characteristic.CurrentAmbientLightLevel)) {
+		try {
 			this.inverter.addCharacteristic(Characteristic.CurrentAmbientLightLevel);
+		} catch (err) {
+			this.log('Already added CurrentAmbientLightLevel');
 		}
-		if (!this.inverter.getCharacteristic(Characteristic.CustomWatts)) {
+		try {
 			this.inverter.addCharacteristic(Characteristic.CustomWatts);
+		} catch (err) {
+			this.log('Already added CustomWatts');
 		}
-		if (!this.inverter.getCharacteristic(Characteristic.CustomVolts)) {
+		try {
 			this.inverter.addCharacteristic(Characteristic.CustomVolts);
+		} catch (err) {
+			this.log('Already added CustomVolts');
 		}
 
 		this.informationService = new Service.AccessoryInformation();
