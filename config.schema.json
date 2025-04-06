@@ -15,6 +15,15 @@
         "minLength": 1,
         "required": false
       },
+      "address": {
+        "title": "IP Address",
+        "type": "string",
+        "format": "string",
+        "default": "169.254.12.3",
+        "description": "IP of your SMA inverter",
+        "minLength": 1,
+        "required": true
+      },
       "debug": {
         "title": "Debug logging",
         "type": "boolean",

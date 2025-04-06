@@ -16,8 +16,7 @@ module.exports = function(homebridge) {
 function SMAHomeManager(log, config) {
 	this.log = log;
 	this.name = config["name"] || "SMA Solar Inverter";
-	// Hardcoded address and hence zero config thanks to https://manuals.sma.de/SBSxx-10/en-US/1685190283.html.
-	this.address = '192.168.1.221';
+	this.address = config["address"] || "169.254.12.3";
 	const refreshInterval = (config['refreshInterval'] * 1000) || 1000;
 	this.debug = config["debug"] || false;
 
