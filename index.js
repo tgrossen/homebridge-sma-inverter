@@ -126,6 +126,7 @@ SMAHomeManager.prototype = {
 
 			// Inverter: StatusActive & StatusFault characteristics
 			client.readHoldingRegisters(30201, 10, function(err, data) {
+				this.log('error', err);
 				this.log("out data", data);
 				this.log("out data.buffer", data.buffer);
 				const condition = data.buffer.readUInt32BE();
