@@ -185,7 +185,7 @@ SMAHomeManager.prototype = {
 			}.bind(this));
 
 			// Eve - kWh
-			client.readHoldingRegisters(30535, 10, function(err, data) {
+			client.readHoldingRegisters(30513, 10, function(err, data) {
 				this.log("Value", data.buffer.readUInt32BE());
 				if(data.buffer.readUInt32BE() > 0 && data.buffer.readUInt32BE() <= (65535*1000) && typeof data.buffer.readUInt32BE() == 'number' && Number.isFinite(data.buffer.readUInt32BE())) {4
 					this.log('setting current ambient light level', data.buffer.readUInt32BE() / 1000)
