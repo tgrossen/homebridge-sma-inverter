@@ -100,7 +100,7 @@ SMAHomeManager.prototype = {
 
 		// Connect to the ModBus server IP address
 		try {
-			client.connectTCP(this.address);
+			client.connectTCP(this.address, { port: 502 });
 		}
 		catch(err) {
 			this.log("Connection attempt failed");
