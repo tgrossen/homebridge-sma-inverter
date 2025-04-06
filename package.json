@@ -1,24 +1,21 @@
 {
   "author": {
-    "name": "Wim Leers"
+    "name": "Travis Grossen"
   },
-  "contributors": [
-    { "name": "codyc1515" }
-  ],
   "bugs": {
-    "url": "https://github.com/wimleers/homebridge-sma-home-manager/issues"
+    "url": "https://github.com/tgrossen/homebridge-sma-inverter/issues"
   },
   "dependencies": {
     "modbus-serial": "^7.7.3",
     "utils": "^0.3.1"
   },
-  "description": "SMA Home Manager & Inverter plug-in for Homebridge",
+  "description": "SMA Inverter plug-in for Homebridge",
   "devDependencies": {},
   "engines": {
     "homebridge": ">=1.6.0",
     "node": ">=18.2.1"
   },
-  "homepage": "https://github.com/wimleers/homebridge-sma-home-manager#readme",
+  "homepage": "https://github.com/tgrossen/homebridge-sma-inverter#readme",
   "keywords": [
     "homebridge-plugin",
     "homekit",
@@ -30,11 +27,11 @@
   ],
   "license": "MIT",
   "main": "index.js",
-  "name": "homebridge-sma-home-manager",
-  "displayName": "SMA Home Manager",
+  "name": "homebridge-sma-inverter",
+  "displayName": "Homebridge SMA Inverter",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wimleers/homebridge-sma-home-manager.git"
+    "url": "git+https://github.com/tgrossen/homebridge-sma-inverter.git"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
