@@ -119,10 +119,10 @@ SMAHomeManager.prototype = {
 	_refresh: function() {
 		// Obtain the values
 		try {
-			/*
+			
 			// Serial Number
 			client.readHoldingRegisters(30057, 10, function(err, data) {this.value.SerialNumber = data.buffer.readUInt32BE();}.bind(this));
-			*/
+			
 
 			// Inverter: StatusActive & StatusFault characteristics
 			client.readHoldingRegisters(30201, 10, function(err, data) {
