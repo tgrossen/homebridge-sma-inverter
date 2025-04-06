@@ -208,14 +208,14 @@ SMAHomeManager.prototype = {
 		this.inverter = new Service.LightSensor(this.name);
 		// Inverter being on/off is something the inverter decides itself, so do not give the user the illusion they can change it.
 		this._makeReadonly(this.inverter.getCharacteristic(Characteristic.On));
-		this.inverter.addCharacteristic(Characteristic.CustomAmperes);
+		// this.inverter.addCharacteristic(Characteristic.CustomAmperes);
 		if (!this.inverter.getCharacteristic(Characteristic.CurrentAmbientLightLevel)) {
 			this.inverter.addCharacteristic(Characteristic.CurrentAmbientLightLevel);
 		}
-		this.inverter.addCharacteristic(Characteristic.CustomVolts);
-		this.inverter.addCharacteristic(Characteristic.CustomWatts);
-		this.inverter.addCharacteristic(Characteristic.StatusActive);
-		this.inverter.addCharacteristic(Characteristic.StatusFault);
+		// this.inverter.addCharacteristic(Characteristic.CustomVolts);
+		// this.inverter.addCharacteristic(Characteristic.CustomWatts);
+		// this.inverter.addCharacteristic(Characteristic.StatusActive);
+		// this.inverter.addCharacteristic(Characteristic.StatusFault);
 
 		this.informationService = new Service.AccessoryInformation();
 		this.informationService
