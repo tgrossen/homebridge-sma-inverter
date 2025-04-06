@@ -22,21 +22,21 @@ function SMAHomeManager(log, config) {
 	this.debug = config["debug"] || false;
 	this.readyToRefresh = false;
 
-	// const customAmperesUUID = uuid();
-	// Characteristic.CustomAmperes = function() {
-	// 	Characteristic.call(this, 'Amperes', customAmperesUUID);
-	// 	// this.setProps({
-	// 	// 	format: Characteristic.Formats.FLOAT,
-	// 	// 	unit: 'A',
-	// 	// 	minValue: 0,
-	// 	// 	maxValue: 65535,
-	// 	// 	minStep: 0.01,
-	// 	// 	perms: [Characteristic.Perms.READ, Characteristic.Perms.NOTIFY]
-	// 	// });
-	// 	// this.value = this.getDefaultValue();
-	// };
-	// inherits(Characteristic.CustomAmperes, Characteristic);
-	// Characteristic.CustomAmperes.UUID = customAmperesUUID;
+	const customAmperesUUID = uuid();
+	Characteristic.CustomAmperes = function() {
+		Characteristic.call(this, 'Amperes', customAmperesUUID);
+		// this.setProps({
+		// 	format: Characteristic.Formats.FLOAT,
+		// 	unit: 'A',
+		// 	minValue: 0,
+		// 	maxValue: 65535,
+		// 	minStep: 0.01,
+		// 	perms: [Characteristic.Perms.READ, Characteristic.Perms.NOTIFY]
+		// });
+		// this.value = this.getDefaultValue();
+	};
+	inherits(Characteristic.CustomAmperes, Characteristic);
+	Characteristic.CustomAmperes.UUID = customAmperesUUID;
 
 	// const currentAmbientLightLevelUUID = uuid();
 	// Characteristic.CurrentAmbientLightLevel = function() {
@@ -54,37 +54,37 @@ function SMAHomeManager(log, config) {
 	// inherits(Characteristic.CurrentAmbientLightLevel, Characteristic);
 	// Characteristic.CurrentAmbientLightLevel.UUID = currentAmbientLightLevelUUID;
 
-	// const customVoltsUUID = uuid();
-	// Characteristic.CustomVolts = function() {
-	// 	Characteristic.call(this, 'Volts', customVoltsUUID);
-	// 	// this.setProps({
-	// 	// 	format: Characteristic.Formats.FLOAT,
-	// 	// 	unit: 'V',
-	// 	// 	minValue: 0,
-	// 	// 	maxValue: 65535,
-	// 	// 	minStep: 0.1,
-	// 	// 	perms: [Characteristic.Perms.READ, Characteristic.Perms.NOTIFY]
-	// 	// });
-	// 	// this.value = this.getDefaultValue();
-	// };
-	// inherits(Characteristic.CustomVolts, Characteristic);
-	// Characteristic.CustomVolts.UUID = customVoltsUUID;
+	const customVoltsUUID = uuid();
+	Characteristic.CustomVolts = function() {
+		Characteristic.call(this, 'Volts', customVoltsUUID);
+		// this.setProps({
+		// 	format: Characteristic.Formats.FLOAT,
+		// 	unit: 'V',
+		// 	minValue: 0,
+		// 	maxValue: 65535,
+		// 	minStep: 0.1,
+		// 	perms: [Characteristic.Perms.READ, Characteristic.Perms.NOTIFY]
+		// });
+		// this.value = this.getDefaultValue();
+	};
+	inherits(Characteristic.CustomVolts, Characteristic);
+	Characteristic.CustomVolts.UUID = customVoltsUUID;
 
-	// const customWattsUUID = uuid();
-	// Characteristic.CustomWatts = function() {
-	// 	Characteristic.call(this, 'Consumption', customWattsUUID);
-	// 	// this.setProps({
-	// 	// 	format: Characteristic.Formats.FLOAT,
-	// 	// 	unit: 'W',
-	// 	// 	minValue: 0,
-	// 	// 	maxValue: 65535,
-	// 	// 	minStep: 0.1,
-	// 	// 	perms: [Characteristic.Perms.READ, Characteristic.Perms.NOTIFY]
-	// 	// });
-	// 	// this.value = this.getDefaultValue();
-	// };
-	// inherits(Characteristic.CustomWatts, Characteristic);
-	// Characteristic.CustomWatts.UUID = customWattsUUID;
+	const customWattsUUID = uuid();
+	Characteristic.CustomWatts = function() {
+		Characteristic.call(this, 'Consumption', customWattsUUID);
+		// this.setProps({
+		// 	format: Characteristic.Formats.FLOAT,
+		// 	unit: 'W',
+		// 	minValue: 0,
+		// 	maxValue: 65535,
+		// 	minStep: 0.1,
+		// 	perms: [Characteristic.Perms.READ, Characteristic.Perms.NOTIFY]
+		// });
+		// this.value = this.getDefaultValue();
+	};
+	inherits(Characteristic.CustomWatts, Characteristic);
+	Characteristic.CustomWatts.UUID = customWattsUUID;
 
 	// Start the connection and refresh cycles
 	this._connect();
