@@ -184,7 +184,6 @@ SMAHomeManager.prototype = {
 				}
 				else {
 					this.log('Inverter not producing, setting values to 0');
-					this.inverter.getCharacteristic(Characteristic.StatusActive).updateValue(false);
 					this.inverter.getCharacteristic(Characteristic.On).updateValue(false);
 					this.inverter.getCharacteristic(Characteristic.CustomWatts).updateValue(0);
 					this.inverter.getCharacteristic(Characteristic.CurrentAmbientLightLevel).updateValue(0.0001);
