@@ -1,6 +1,6 @@
 const inherits = require("util").inherits,
 	ModbusRTU = require("modbus-serial");
-const uuid = require("uuid").v4;
+// const uuid = require("uuid").v4;
 
 var client = new ModbusRTU();
 
@@ -21,69 +21,69 @@ function SMAHomeManager(log, config) {
 	const refreshInterval = (config['refreshInterval'] * 1000) || 1000;
 	this.debug = config["debug"] || false;
 
-	const customAmperesUUID = uuid();
-	Characteristic.CustomAmperes = function() {
-		Characteristic.call(this, 'Amperes', customAmperesUUID);
-		this.setProps({
-			format: Characteristic.Formats.FLOAT,
-			unit: 'A',
-			minValue: 0,
-			maxValue: 65535,
-			minStep: 0.01,
-			perms: [Characteristic.Perms.READ, Characteristic.Perms.NOTIFY]
-		});
-		this.value = this.getDefaultValue();
-	};
-	inherits(Characteristic.CustomAmperes, Characteristic);
-	Characteristic.CustomAmperes.UUID = customAmperesUUID;
+	// const customAmperesUUID = uuid();
+	// Characteristic.CustomAmperes = function() {
+	// 	Characteristic.call(this, 'Amperes', customAmperesUUID);
+	// 	this.setProps({
+	// 		format: Characteristic.Formats.FLOAT,
+	// 		unit: 'A',
+	// 		minValue: 0,
+	// 		maxValue: 65535,
+	// 		minStep: 0.01,
+	// 		perms: [Characteristic.Perms.READ, Characteristic.Perms.NOTIFY]
+	// 	});
+	// 	this.value = this.getDefaultValue();
+	// };
+	// inherits(Characteristic.CustomAmperes, Characteristic);
+	// Characteristic.CustomAmperes.UUID = customAmperesUUID;
 
-	const currentAmbientLightLevelUUID = uuid();
-	Characteristic.CurrentAmbientLightLevel = function() {
-		Characteristic.call(this, 'Total Consumption', currentAmbientLightLevelUUID);
-		this.setProps({
-			format: Characteristic.Formats.FLOAT,
-			unit: 'kWh',
-			minValue: 0,
-			maxValue: 65535,
-			minStep: 0.001,
-			perms: [Characteristic.Perms.READ, Characteristic.Perms.NOTIFY]
-		});
-		this.value = this.getDefaultValue();
-	};
-	inherits(Characteristic.CurrentAmbientLightLevel, Characteristic);
-	Characteristic.CurrentAmbientLightLevel.UUID = currentAmbientLightLevelUUID;
+	// const currentAmbientLightLevelUUID = uuid();
+	// Characteristic.CurrentAmbientLightLevel = function() {
+	// 	Characteristic.call(this, 'Total Consumption', currentAmbientLightLevelUUID);
+	// 	this.setProps({
+	// 		format: Characteristic.Formats.FLOAT,
+	// 		unit: 'kWh',
+	// 		minValue: 0,
+	// 		maxValue: 65535,
+	// 		minStep: 0.001,
+	// 		perms: [Characteristic.Perms.READ, Characteristic.Perms.NOTIFY]
+	// 	});
+	// 	this.value = this.getDefaultValue();
+	// };
+	// inherits(Characteristic.CurrentAmbientLightLevel, Characteristic);
+	// Characteristic.CurrentAmbientLightLevel.UUID = currentAmbientLightLevelUUID;
 
-	const customVoltsUUID = uuid();
-	Characteristic.CustomVolts = function() {
-		Characteristic.call(this, 'Volts', customVoltsUUID);
-		this.setProps({
-			format: Characteristic.Formats.FLOAT,
-			unit: 'V',
-			minValue: 0,
-			maxValue: 65535,
-			minStep: 0.1,
-			perms: [Characteristic.Perms.READ, Characteristic.Perms.NOTIFY]
-		});
-		this.value = this.getDefaultValue();
-	};
-	inherits(Characteristic.CustomVolts, Characteristic);
-	Characteristic.CustomVolts.UUID = customVoltsUUID;
+	// const customVoltsUUID = uuid();
+	// Characteristic.CustomVolts = function() {
+	// 	Characteristic.call(this, 'Volts', customVoltsUUID);
+	// 	this.setProps({
+	// 		format: Characteristic.Formats.FLOAT,
+	// 		unit: 'V',
+	// 		minValue: 0,
+	// 		maxValue: 65535,
+	// 		minStep: 0.1,
+	// 		perms: [Characteristic.Perms.READ, Characteristic.Perms.NOTIFY]
+	// 	});
+	// 	this.value = this.getDefaultValue();
+	// };
+	// inherits(Characteristic.CustomVolts, Characteristic);
+	// Characteristic.CustomVolts.UUID = customVoltsUUID;
 
-	const customWattsUUID = uuid();
-	Characteristic.CustomWatts = function() {
-		Characteristic.call(this, 'Consumption', customWattsUUID);
-		this.setProps({
-			format: Characteristic.Formats.FLOAT,
-			unit: 'W',
-			minValue: 0,
-			maxValue: 65535,
-			minStep: 0.1,
-			perms: [Characteristic.Perms.READ, Characteristic.Perms.NOTIFY]
-		});
-		this.value = this.getDefaultValue();
-	};
-	inherits(Characteristic.CustomWatts, Characteristic);
-	Characteristic.CustomWatts.UUID = customWattsUUID;
+	// const customWattsUUID = uuid();
+	// Characteristic.CustomWatts = function() {
+	// 	Characteristic.call(this, 'Consumption', customWattsUUID);
+	// 	this.setProps({
+	// 		format: Characteristic.Formats.FLOAT,
+	// 		unit: 'W',
+	// 		minValue: 0,
+	// 		maxValue: 65535,
+	// 		minStep: 0.1,
+	// 		perms: [Characteristic.Perms.READ, Characteristic.Perms.NOTIFY]
+	// 	});
+	// 	this.value = this.getDefaultValue();
+	// };
+	// inherits(Characteristic.CustomWatts, Characteristic);
+	// Characteristic.CustomWatts.UUID = customWattsUUID;
 
 	// Start the connection and refresh cycles
 	this._connect();
@@ -208,14 +208,14 @@ SMAHomeManager.prototype = {
 		this.inverter = new Service.LightSensor(this.name);
 		// Inverter being on/off is something the inverter decides itself, so do not give the user the illusion they can change it.
 		this._makeReadonly(this.inverter.getCharacteristic(Characteristic.On));
-		// this.inverter.addCharacteristic(Characteristic.CustomAmperes);
+		this.inverter.addCharacteristic(Characteristic.StatusActive);
+		this.inverter.addCharacteristic(Characteristic.StatusFault);
+		this.inverter.addCharacteristic(Characteristic.CustomAmperes);
 		if (!this.inverter.getCharacteristic(Characteristic.CurrentAmbientLightLevel)) {
 			this.inverter.addCharacteristic(Characteristic.CurrentAmbientLightLevel);
 		}
-		// this.inverter.addCharacteristic(Characteristic.CustomVolts);
-		// this.inverter.addCharacteristic(Characteristic.CustomWatts);
-		// this.inverter.addCharacteristic(Characteristic.StatusActive);
-		// this.inverter.addCharacteristic(Characteristic.StatusFault);
+		this.inverter.addCharacteristic(Characteristic.CustomVolts);
+		this.inverter.addCharacteristic(Characteristic.CustomWatts);
 
 		this.informationService = new Service.AccessoryInformation();
 		this.informationService
