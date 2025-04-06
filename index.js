@@ -35,7 +35,7 @@ function SMAHomeManager(log, config) {
 	inherits(Characteristic.CustomAmperes, Characteristic);
 	Characteristic.CustomAmperes.UUID = 'E863F126-079E-48FF-8F27-9C2605A29F52';
 
-	Characteristic.CustomKilowattHours = function() {
+	Characteristic.CurrentAmbientLightLevel = function() {
 		Characteristic.call(this, 'Total Consumption', 'E863F10C-079E-48FF-8F27-9C2605A29F52');
 		this.setProps({
 			format: Characteristic.Formats.FLOAT,
@@ -47,8 +47,8 @@ function SMAHomeManager(log, config) {
 		});
 		this.value = this.getDefaultValue();
 	};
-	inherits(Characteristic.CustomKilowattHours, Characteristic);
-	Characteristic.CustomKilowattHours.UUID = 'E863F10C-079E-48FF-8F27-9C2605A29F52';
+	inherits(Characteristic.CurrentAmbientLightLevel, Characteristic);
+	Characteristic.CurrentAmbientLightLevel.UUID = 'E863F10C-079E-48FF-8F27-9C2605A29F52';
 
 	Characteristic.CustomVolts = function() {
 		Characteristic.call(this, 'Volts', 'E863F10A-079E-48FF-8F27-9C2605A29F52');
@@ -182,7 +182,7 @@ SMAHomeManager.prototype = {
 			// Eve - kWh
 			client.readHoldingRegisters(30535, 10, function(err, data) {
 				if(data.buffer.readUInt32BE() > 0 && data.buffer.readUInt32BE() <= (65535*1000) && typeof data.buffer.readUInt32BE() == 'number' && Number.isFinite(data.buffer.readUInt32BE())) {
-					this.inverter.getCharacteristic(Characteristic.CustomKilowattHours).updateValue(data.buffer.readUInt32BE() / 1000);
+					this.inverter.getCharacteristic(Characteristic.CurrentAmbientLightLevel).updateValue(data.buffer.readUInt32BE() / 1000);
 				}
 			}.bind(this));
 		}
@@ -195,13 +195,13 @@ SMAHomeManager.prototype = {
 	},
 
 	getServices: function() {
-		this.inverter = new Service.PowerManagement(this.name);
+		this.inverter = new Service.Lightbulb(this.name);
 		// Inverter being on/off is something the inverter decides itself, so do not give the user the illusion they can change it.
 		this._makeReadonly(this.inverter.getCharacteristic(Characteristic.On));
 		this.inverter.addCharacteristic(Characteristic.StatusActive);
 		this.inverter.addCharacteristic(Characteristic.StatusFault);
 		this.inverter.addCharacteristic(Characteristic.CustomAmperes);
-		this.inverter.addCharacteristic(Characteristic.CustomKilowattHours);
+		this.inverter.addCharacteristic(Characteristic.CurrentAmbientLightLevel);
 		this.inverter.addCharacteristic(Characteristic.CustomVolts);
 		this.inverter.addCharacteristic(Characteristic.CustomWatts);
 
