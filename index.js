@@ -1,6 +1,6 @@
 const inherits = require("util").inherits,
 	ModbusRTU = require("modbus-serial");
-// const uuid = require("uuid").v4;
+const uuid = require("uuid").v4;
 
 var client = new ModbusRTU();
 
