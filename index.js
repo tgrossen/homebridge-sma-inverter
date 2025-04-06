@@ -111,6 +111,8 @@ SMAHomeManager.prototype = {
 			// Set the ModBus Id to use
 			client.setID(3);
 
+			this.log('client.isOpen', client.isOpen);
+
 			if(this.debug) {this.log("Connection successful");}
 		}
 		catch(err) {this.log("Could not set the Channel Number");}
