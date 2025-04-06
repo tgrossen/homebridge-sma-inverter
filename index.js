@@ -151,9 +151,7 @@ SMAHomeManager.prototype = {
 				}
 			}.bind(this));
 
-			this.log('reading holding registers');
 			client.readHoldingRegisters(30775, 10, function(err, data) {
-				this.log('did read holding registers');
 				// Check if the value is unrealistic (the inverter is not generating)
 				if(data.buffer.readUInt32BE() > 0 && data.buffer.readUInt32BE() <= (65535*1000) && typeof data.buffer.readUInt32BE() == 'number' && Number.isFinite(data.buffer.readUInt32BE())) {
 					const solarWatts = data.buffer.readUInt32BE();
