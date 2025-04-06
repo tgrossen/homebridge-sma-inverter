@@ -24,7 +24,7 @@ function SMAHomeManager(log, config) {
 
 	const customAmperesUUID = uuid();
 	Characteristic.CustomAmperes = function() {
-		// Characteristic.call(this, 'Amperes', customAmperesUUID);
+		Characteristic.call(this, 'Amperes', customAmperesUUID);
 		// this.setProps({
 		// 	format: Characteristic.Formats.FLOAT,
 		// 	unit: 'A',
@@ -40,7 +40,7 @@ function SMAHomeManager(log, config) {
 
 	const currentAmbientLightLevelUUID = uuid();
 	Characteristic.CurrentAmbientLightLevel = function() {
-		// Characteristic.call(this, 'Total Consumption', currentAmbientLightLevelUUID);
+		Characteristic.call(this, 'Total Consumption', currentAmbientLightLevelUUID);
 		// this.setProps({
 		// 	format: Characteristic.Formats.FLOAT,
 		// 	unit: 'kWh',
@@ -56,7 +56,7 @@ function SMAHomeManager(log, config) {
 
 	const customVoltsUUID = uuid();
 	Characteristic.CustomVolts = function() {
-		// Characteristic.call(this, 'Volts', customVoltsUUID);
+		Characteristic.call(this, 'Volts', customVoltsUUID);
 		// this.setProps({
 		// 	format: Characteristic.Formats.FLOAT,
 		// 	unit: 'V',
@@ -72,7 +72,7 @@ function SMAHomeManager(log, config) {
 
 	const customWattsUUID = uuid();
 	Characteristic.CustomWatts = function() {
-		// Characteristic.call(this, 'Consumption', customWattsUUID);
+		Characteristic.call(this, 'Consumption', customWattsUUID);
 		// this.setProps({
 		// 	format: Characteristic.Formats.FLOAT,
 		// 	unit: 'W',
